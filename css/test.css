@@ -1,13 +1,67 @@
-body {font-family:"メイリオ"; font-size:20px;}
-table {border:1px;}
-.tab{overflow:hidden;}
-.tab li{background:#ccc; padding:5px 25px; float:left; margin-right:1px; list-style:none;}
-.tab li.select{background:#eee;}
-.content li{background:#eee; padding:20px; list-style:none; width:1000px;}
-.content table {border:1px silver solid; border-collapse:collapse;}
-.content td {border:1px silver solid; border-collapse:collapse; padding:5px;}
-.content .function input {width:18px; height:18px;}
-.content .sms input {width:18px; height:18px;}
-.content .time input {width:22px; height:20px; font-family:"メイリオ"; font-size:18px;}
-.hide {display:none;}
-ul {margin:0px;}
+body {
+	font-family: "繝｡繧､繝ｪ繧ｪ";
+	font-size: 20px;
+}
+
+table {
+	border: 1px;
+}
+
+.tab {
+	overflow: hidden;
+}
+
+.tab li {
+	background: #ccc;
+	padding: 5px 25px;
+	float: left;
+	margin-right: 1px;
+	list-style: none;
+}
+
+.tab li.select {
+	background: #eee;
+}
+
+.content li {
+	background: #eee;
+	padding: 20px;
+	list-style: none;
+	width: 1000px;
+}
+
+.content table {
+	border: 1px silver solid;
+	border-collapse: collapse;
+}
+
+.content td {
+	border: 1px silver solid;
+	border-collapse: collapse;
+	padding:5px;
+}
+
+.content .function input {
+	width: 18px;
+	height: 18px;
+}
+
+.content .sms input {
+	width: 18px;
+	height: 18px;
+}
+
+.content .time input {
+	width: 22px;
+	height: 20px;
+	font-family: "繝｡繧､繝ｪ繧ｪ";
+	font-size: 18px;
+}
+
+.hide {
+	display: none;
+}
+
+ul {
+	margin: 0px;
+}
