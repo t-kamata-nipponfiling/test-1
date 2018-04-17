@@ -17,6 +17,7 @@ table {
 	float: left;
 	margin-right: 1px;
 	list-style: none;
+	cursor: pointer;
 }
 
 .tab li.select {
