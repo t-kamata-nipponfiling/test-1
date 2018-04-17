@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>各種設定 - サンプル</title>
+	<script src="js/jquery.js"></script>
+	<script src="js/test.js"></script>
+	<link href="css/test.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<h1>各種設定 - サンプル</h1>
+	<h1></h1>
+	<ul class="tab">
+		<li class="select">機能設定</li>
+		<li>時刻・期間設定</li>
+		<li>ＳＭＳ通知設定</li>
+	</ul>
+	<ul class="content">
+		<li>
+			<table class="function">
+				<tr>
+					<td>
+						進捗照会の「予定時間差合計」
+					</td>
+					<td>
+						<label><input type="radio" name="result" value="order" checked="checked"> 表示</label>
+						<label><input type="radio" name="result" value="hidden"> 非表示</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						接車案内順
+					</td>
+					<td>
+						<label><input type="radio" name="guide" value="show" checked="checked"> 受付順</label>
+						<label><input type="radio" name="guide" value="plan"> 入荷予定時間順</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						大型モニタの状態表示
+					</td>
+					<td>
+						<label><input type="checkbox" name="monitor" value="1" checked> 待機</label>
+						<label><input type="checkbox" name="monitor" value="2" checked> 案内中</label>
+						<label><input type="checkbox" name="monitor" value="3" checked> 荷降中</label>
+						<label><input type="checkbox" name="monitor" value="4"> 荷降完</label>
+						<label><input type="checkbox" name="monitor" value="5"> 退場済</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						案内中車両の自動強制退場（一定時間経過後）
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value="0"> 設定</label>
+					</td>
+				</tr>
+			</table>
+		</li>
+		
+		<li class="hide">
+			<table class="time">
+				<tr>
+					<td>
+						日次更新時刻（時 分 秒）
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value=""> 時</label>
+						<label><input type="textbox" name="minutes" value=""> 分</label>
+						<label><input type="textbox" name="seconds" value=""> 秒</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						バース案内開始時刻（時 分）
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value=""> 時</label>
+						<label><input type="textbox" name="minutes" value=""> 分</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						案内中車両の自動強制退場期間
+					</td>
+					<td>
+						<label><input type="textbox" name="minutes" value=""> 分経過後に強制退場</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						AMCによる荷降完了操作後の自動強制退場期間
+					</td>
+					<td>
+						<label><input type="textbox" name="minutes" value=""> 分経過後に強制退場</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						入荷受付の発注先指定が "予定外" であった場合に表示する<br>入荷受付予定時刻
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value=""> 時</label>
+						<label><input type="textbox" name="minutes" value=""> 分</label>
+						～
+						<label><input type="textbox" name="hour" value=""> 時</label>
+						<label><input type="textbox" name="minutes" value=""> 分</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						新規の発注先がマスタへ追加された場合の<br>入荷受付予定時刻（初期設定）
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value=""> 時</label>
+						<label><input type="textbox" name="minutes" value=""> 分</label>
+						～
+						<label><input type="textbox" name="hour" value=""> 時</label>
+						<label><input type="textbox" name="minutes" value=""> 分</label>
+					</td>
+				</tr>
+			</table>
+		</li>
+
+		<li class="hide">
+			<table class="sms">
+				<tr>
+					<td>
+						接車案内時
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value="0"> 案内通知</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						AMCによる荷降完了操作時
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value="0"> 荷降完了通知</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						ドライバーによる退場操作時
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value="0"> 退場通知</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						管理者による強制退場操作時
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value="0"> 強制退場通知</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						案内中車両の自動強制退場時（一定時間経過後）
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value="0"> 強制退場通知</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						荷降中車両の自動強制退場時（一定時間経過後）
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value="0"> 強制退場通知</label>
+					</td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+</body>
+</html>
