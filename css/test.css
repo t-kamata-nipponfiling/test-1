@@ -3,8 +3,8 @@ body {
 	font-size: 20px;
 }
 
-table {
-	border: 1px;
+ul {
+	margin: 0px;
 }
 
 .tab {
@@ -32,14 +32,14 @@ table {
 }
 
 .content table {
-	border: 1px silver solid;
 	border-collapse: collapse;
 }
 
 .content td {
-	border: 1px silver solid;
+	border-top: 1px silver solid;
+	border-bottom: 1px silver solid;
 	border-collapse: collapse;
-	padding:5px;
+	padding: 5px;
 }
 
 .content .function input {
@@ -61,8 +61,4 @@ table {
 
 .hide {
 	display: none;
-}
-
-ul {
-	margin: 0px;
 }
