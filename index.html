@@ -10,7 +10,7 @@
 <body>
 	<h1>各種設定 - サンプル</h1>
 	<h1></h1>
-	
+
 	<ul class="tab">
 		<li class="select">機能設定</li>
 		<li>時刻・期間設定</li>
@@ -53,13 +53,15 @@
 					<td>
 						案内中車両の自動強制退場（一定時間経過後）
 					</td>
-					<td>
-						<label><input type="checkbox" name="exit" value="0"> 設定　</label>
+					<td class="exit">
+						<label><input type="checkbox" name="exit" value="0" checked> 設定　</label>
+						<span></span>
+						<p class="arrow_box"><b>説明：</b><br>"設定" にチェックした場合に「時刻・期間設定」や「ＳＭＳ通知設定」で<br>有効になる機能があります。<br>（チェックを外すとそれらは無効となります。）</p>
 					</td>
 				</tr>
 			</table>
 		</li>
-		
+
 		<li class="hide">
 			<table class="time">
 				<tr>
@@ -81,12 +83,14 @@
 						<label><input type="textbox" name="minutes" value=""> 分　</label>
 					</td>
 				</tr>
-				<tr>
+				<tr class="related">
 					<td>
 						案内中車両の自動強制退場期間
 					</td>
 					<td>
-						<label><input type="textbox" name="minutes" value=""> 分経過後に強制退場　</label>
+						<span><label><input type="textbox" name="minutes" value=""> 分経過後に強制退場　</label>
+						<span></span>
+						<p class="arrow_box"><b>説明：</b><br>機能設定の「案内中車両の自動強制退場（一定時間経過後）」で<br>"設定" にチェックされているため有効になります。</p>
 					</td>
 				</tr>
 				<tr>
@@ -123,7 +127,7 @@
 				</tr>
 			</table>
 		</li>
-		
+
 		<li class="hide">
 			<table class="sms">
 				<tr>
@@ -131,7 +135,7 @@
 						接車案内時
 					</td>
 					<td>
-						<label><input type="checkbox" name="exit" value="0"> 案内通知　</label>
+						<label><input type="checkbox" name="sms" value=""> 案内通知　</label>
 					</td>
 				</tr>
 				<tr>
@@ -139,7 +143,7 @@
 						AMCによる荷降完了操作時
 					</td>
 					<td>
-						<label><input type="checkbox" name="exit" value="0"> 荷降完了通知　</label>
+						<label><input type="checkbox" name="sms" value=""> 荷降完了通知　</label>
 					</td>
 				</tr>
 				<tr>
@@ -147,7 +151,7 @@
 						ドライバーによる退場操作時
 					</td>
 					<td>
-						<label><input type="checkbox" name="exit" value="0"> 退場通知　</label>
+						<label><input type="checkbox" name="sms" value=""> 退場通知　</label>
 					</td>
 				</tr>
 				<tr>
@@ -155,15 +159,17 @@
 						管理者による強制退場操作時
 					</td>
 					<td>
-						<label><input type="checkbox" name="exit" value="0"> 強制退場通知　</label>
+						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
 					</td>
 				</tr>
-				<tr>
+				<tr class="related">
 					<td>
 						案内中車両の自動強制退場時（一定時間経過後）
 					</td>
 					<td>
-						<label><input type="checkbox" name="exit" value="0"> 強制退場通知　</label>
+						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
+						<span></span>
+						<p class="arrow_box"><b>説明：</b><br>機能設定の「案内中車両の自動強制退場（一定時間経過後）」で<br>"設定" にチェックされているため有効になります。</p>
 					</td>
 				</tr>
 				<tr>
@@ -171,11 +177,40 @@
 						荷降中車両の自動強制退場時（一定時間経過後）
 					</td>
 					<td>
-						<label><input type="checkbox" name="exit" value="0"> 強制退場通知　</label>
+						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
 					</td>
 				</tr>
 			</table>
 		</li>
 	</ul>
+
+
+	<div class="hide">
+		<div class="row">
+			<div class="balloon balloon--top_left"><div>上辺左側</div></div>
+			<div class="balloon balloon--top_center"><div>上辺中央</div></div>
+			<div class="balloon balloon--top_right"><div>上辺右側</div></div>
+		</div>
+
+		<div class="row">
+			<div class="balloon balloon--right_top"><div>右辺上側</div></div>
+			<div class="balloon balloon--right_middle"><div>右辺中央</div></div>
+			<div class="balloon balloon--right_bottom"><div>右辺下側</div></div>
+		</div>
+
+		<div class="row">
+			<div class="balloon balloon--bottom_left"><div>下辺左側</div></div>
+			<div class="balloon balloon--bottom_center"><div>下辺中央</div></div>
+			<div class="balloon balloon--bottom_right"><div>下辺右側</div></div>
+		</div>
+
+		<div class="row">
+			<div class="balloon balloon--left_top"><div>左辺上側</div></div>
+			<div class="balloon balloon--left_middle"><div>左辺中央</div></div>
+			<div class="balloon balloon--left_bottom"><div>左辺下側</div></div>
+		</div>
+	</div>
+
+
 </body>
 </html>
