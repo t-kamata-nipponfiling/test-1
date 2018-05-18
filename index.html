@@ -15,26 +15,18 @@
 		<li class="select">機能設定</li>
 		<li>時刻・期間設定</li>
 		<li>ＳＭＳ通知設定</li>
+		<li>常駐プロセス監視</li>
 	</ul>
 	<ul class="content">
 		<li>
 			<table class="function">
 				<tr>
 					<td>
-						進捗照会の「予定時間差合計」
-					</td>
-					<td>
-						<label><input type="radio" name="result" value="order" checked="checked"> 表示　</label>
-						<label><input type="radio" name="result" value="hidden"> 非表示　</label>
-					</td>
-				</tr>
-				<tr>
-					<td>
 						接車案内順
 					</td>
 					<td>
-						<label><input type="radio" name="guide" value="show" checked="checked"> 受付順　</label>
-						<label><input type="radio" name="guide" value="plan"> 入荷予定時間受付順　</label>
+						<label><input type="radio" name="guide" value="show"> 先着順　</label>
+						<label><input type="radio" name="guide" value="plan" checked="checked"> 入荷予定時間順　</label>
 					</td>
 				</tr>
 				<tr>
@@ -179,6 +171,45 @@
 					<td>
 						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
 					</td>
+				</tr>
+			</table>
+		</li>
+
+		<li class="hide">
+			<table class="monitor">
+				<tr>
+					<th>名称</th>
+					<th>状態</th>
+					<th>メッセージ	</th>
+				</tr>
+				<tr>
+					<td class="dummy">
+						日次更新
+						<span></span>
+						<span class="arrow_box"><b>説明：</b><br></span>
+					</td>
+					<td class="status1">正常</td>
+					<td>-</td>
+				</tr>
+				<tr>
+					<td>一括出力</td>
+					<td class="status2">異常</td>
+					<td>～を確認してください</td>
+				</tr>
+				<tr>
+					<td>上位連携</td>
+					<td class="status3">警告</td>
+					<td>-</td>
+				</tr>
+				<tr>
+					<td>案内監視</td>
+					<td class="status1">正常</td>
+					<td>-</td>
+				</tr>
+				<tr>
+					<td>印刷管理</td>
+					<td class="status2">異常</td>
+					<td>～を確認してください</td>
 				</tr>
 			</table>
 		</li>
