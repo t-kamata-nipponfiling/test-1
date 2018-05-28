@@ -8,11 +8,16 @@ $(function() {
 		$(this).addClass('select')
 	});
 
-	$(".exit input").change(function() {
-		$('.related input').prop('disabled', !$(".exit input").prop('checked'));
-		$('.related').css({ color: $(".exit input").prop('checked') ? 'black' : 'silver' });
-		$('.content span').next('p')[$(".exit input").prop('checked') ? 'show' : 'hide']();
+	$('.exit input').change(function() {
+		$('.exit .related input').prop('disabled', !$('.exit input').prop('checked'));
+		$('.exit .related').css({ color: $('.exit input').prop('checked') ? 'black' : 'darkgray' });
 	});
-	$(".exit input").trigger('change');
+	$('.exit input').trigger('change');
+
+	$('.temperature input').change(function() {
+		$('.temperature .related input').prop('disabled', $('.temperature input').prop('checked'));
+		$('.temperature .related').css({ color: $('.temperature input').prop('checked') ? 'darkgray' : 'black' });
+	});
+	$('.temperature input').trigger('change');
 
 });

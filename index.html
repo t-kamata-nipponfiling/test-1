@@ -15,23 +15,73 @@
 		<li class="select">機能設定</li>
 		<li>時刻・期間設定</li>
 		<li>ＳＭＳ通知設定</li>
-		<li>常駐プロセス監視</li>
+		<li>システム状態監視</li>
 	</ul>
 	<ul class="content">
 		<li>
 			<table class="function">
 				<tr>
+					<td colspan="2">
+						有効バース数
+					</td>
 					<td>
+						10
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
 						接車案内順
 					</td>
 					<td>
-						<label><input type="radio" name="guide" value="show"> 先着順　</label>
-						<label><input type="radio" name="guide" value="plan" checked="checked"> 入荷予定時間順　</label>
+						<label><input type="radio" name="guide" value=""> 先着順　</label>
+						<label><input type="radio" name="guide" value="" checked="checked"> 入荷予定時間順　</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						案内中車両の自動強制退場
+					</td>
+					<td class="exit">
+						<label><input type="checkbox" name="exit" value=""> 設定　</label>　
+						<label class="time related"><input type="textbox" name="minutes" value="60"> 分経過後に強制退場　</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						AMCによる荷降完了操作後の自動強制退場
+					</td>
+					<td>
+						<label class="time"><input type="textbox" name="minutes" value=""> 分経過後に強制退場　</label>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="4">
+						大型モニタの表示
+					</td>
+					<td>
+						画面
+					</td>
+					<td class="display">
+						<label><input type="radio" name="display" value="" checked="checked"> リスト　</label>
+						<label><input type="radio" name="display" value=""> マトリクス　</label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						大型モニタの状態表示
+						温度帯
+					</td>
+					<td class="temperature">
+						<label><input type="radio" name="temperature" value="" checked="checked"> 全温度帯　</label>
+						<br>
+						<label><input type="radio" name="temperature" value=""> 各温度帯毎　</label>　
+						<label class="related"><input type="checkbox" name="temperature" value="" checked="checked"> ドライ　</label>
+						<label class="related"><input type="checkbox" name="temperature" value="" checked="checked"> チルド　</label>
+						<label class="related"><input type="checkbox" name="temperature" value="" checked="checked"> フローズン　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						状態
 					</td>
 					<td>
 						<label><input type="checkbox" name="monitor" value="1" checked> 待機　</label>
@@ -43,12 +93,10 @@
 				</tr>
 				<tr>
 					<td>
-						案内中車両の自動強制退場（一定時間経過後）
+						切替期間
 					</td>
-					<td class="exit">
-						<label><input type="checkbox" name="exit" value="0" checked> 設定　</label>
-						<span></span>
-						<p class="arrow_box"><b>説明：</b><br>"設定" にチェックした場合に「時刻・期間設定」や「ＳＭＳ通知設定」で<br>有効になる機能があります。<br>（チェックを外すとそれらは無効となります。）</p>
+					<td class="display">
+							<label class="time related"><input type="textbox" name="minutes" value="10"> 秒毎に画面切替　</label>
 					</td>
 				</tr>
 			</table>
@@ -73,24 +121,6 @@
 					<td>
 						<label><input type="textbox" name="hour" value=""> 時　</label>
 						<label><input type="textbox" name="minutes" value=""> 分　</label>
-					</td>
-				</tr>
-				<tr class="related">
-					<td>
-						案内中車両の自動強制退場期間
-					</td>
-					<td>
-						<span><label><input type="textbox" name="minutes" value=""> 分経過後に強制退場　</label>
-						<span></span>
-						<p class="arrow_box"><b>説明：</b><br>機能設定の「案内中車両の自動強制退場（一定時間経過後）」で<br>"設定" にチェックされているため有効になります。</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						AMCによる荷降完了操作後の自動強制退場期間
-					</td>
-					<td>
-						<label><input type="textbox" name="minutes" value=""> 分経過後に強制退場　</label>
 					</td>
 				</tr>
 				<tr>
@@ -154,19 +184,17 @@
 						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
 					</td>
 				</tr>
-				<tr class="related">
+				<tr>
 					<td>
-						案内中車両の自動強制退場時（一定時間経過後）
+						案内中車両の自動（一定時間経過後）強制退場時
 					</td>
 					<td>
 						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
-						<span></span>
-						<p class="arrow_box"><b>説明：</b><br>機能設定の「案内中車両の自動強制退場（一定時間経過後）」で<br>"設定" にチェックされているため有効になります。</p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						荷降中車両の自動強制退場時（一定時間経過後）
+						荷降中車両の自動（一定時間経過後）強制退場時
 					</td>
 					<td>
 						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
@@ -176,35 +204,48 @@
 		</li>
 
 		<li class="hide">
-			<table class="monitor">
-				<tr>
-					<td>日次更新</td>
-					<td class="status1">正常</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>一括出力</td>
-					<td class="status2">異常</td>
-					<td>～を確認してください</td>
-				</tr>
-				<tr>
-					<td>上位連携</td>
-					<td class="status3">警告</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>案内監視</td>
-					<td class="status1">正常</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>印刷管理</td>
-					<td class="status2">異常</td>
-					<td>～を確認してください</td>
-				</tr>
-			</table>
+				<span class="header">SMS送信状態</span>
+				<table class="monitor">
+					<tr>
+						<th>端末ID</th>
+						<th>本日送信数</th>
+						<th>今月送信数</th>
+						<th>本日エラー数</th>
+						<th>今月エラー数</th>
+					</tr>
+					<tr>
+						<td>0000</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+				</table>
+				<br>
+				<span class="header">常駐プログラム状態</span>
+				<table class="monitor">
+					<tr>
+						<th>日時更新</th>
+						<th>一括出力</th>
+						<th>上位連携</th>
+						<th>案内監視</th>
+						<th>印刷管理</th>
+					</tr>
+					<tr>
+						<td class="status1">正常</td>
+						<td class="status1">正常</td>
+						<td class="status1">正常</td>
+						<td class="status3">警告</td>
+						<td class="status2">異常</td>
+					</tr>
+				</table>
 		</li>
 	</ul>
+
+
+
+
+
 
 
 	<div class="hide">

@@ -41,6 +41,7 @@ ul {
 }
 
 .content td {
+	vertical-align: center;
 	border-top: 1px silver solid;
 	border-bottom: 1px silver solid;
 	border-collapse: collapse;
@@ -58,20 +59,41 @@ ul {
 }
 
 .content .time input {
-	width: 22px;
+	width: 26px;
 	height: 20px;
 	font-family: "メイリオ";
 	font-size: 18px;
 }
 
+.content .monitor th {
+	background: gray;
+	color: whitesmoke;
+	text-align: center;
+	vertical-align: center;
+	border: 1px silver solid;
+	padding: 0px 20px;
+}
+
+.content .monitor td {
+	vertical-align: center;
+	text-align: center;
+	border: 1px silver solid;
+	padding: 0px 20px;
+}
+
 .content .status1 {
-	background: royalblue;
+	background: lime;
 }
 .content .status2 {
-	background: crimson;
+	background: red;
 }
 .content .status3 {
 	background: yellow;
+}
+
+.header {
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 .hide {
