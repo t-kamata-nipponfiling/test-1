@@ -51,7 +51,7 @@
 						AMCによる荷降完了操作後の自動強制退場
 					</td>
 					<td>
-						<label class="time"><input type="textbox" name="minutes" value=""> 分経過後に強制退場　</label>
+						<label class="time"><input type="textbox" name="minutes" value="60"> 分経過後に強制退場　</label>
 					</td>
 				</tr>
 				<tr>
@@ -109,9 +109,9 @@
 						日次更新時刻（時　分　秒）
 					</td>
 					<td>
-						<label><input type="textbox" name="hour" value=""> 時　</label>
-						<label><input type="textbox" name="minutes" value=""> 分　</label>
-						<label><input type="textbox" name="seconds" value=""> 秒　</label>
+						<label><input type="textbox" name="hour" value="0"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
+						<label><input type="textbox" name="seconds" value="0"> 秒　</label>
 					</td>
 				</tr>
 				<tr>
@@ -119,8 +119,8 @@
 						バース案内開始時刻（時　分）
 					</td>
 					<td>
-						<label><input type="textbox" name="hour" value=""> 時　</label>
-						<label><input type="textbox" name="minutes" value=""> 分　</label>
+						<label><input type="textbox" name="hour" value="8"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
 					</td>
 				</tr>
 				<tr>
@@ -128,11 +128,11 @@
 						入荷受付の発注先指定が "予定外" であった場合に<br>表示する入荷受付予定時刻
 					</td>
 					<td>
-						<label><input type="textbox" name="hour" value=""> 時　</label>
-						<label><input type="textbox" name="minutes" value=""> 分　</label>
+						<label><input type="textbox" name="hour" value="8"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
 						～　
-						<label><input type="textbox" name="hour" value=""> 時　</label>
-						<label><input type="textbox" name="minutes" value=""> 分　</label>
+						<label><input type="textbox" name="hour" value="11"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
 					</td>
 				</tr>
 				<tr>
@@ -140,11 +140,11 @@
 						新規の発注先がマスタへ追加された場合に<br>設定する入荷受付予定時刻（初期設定）
 					</td>
 					<td>
-						<label><input type="textbox" name="hour" value=""> 時　</label>
-						<label><input type="textbox" name="minutes" value=""> 分　</label>
+						<label><input type="textbox" name="hour" value="8"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
 						～　
-						<label><input type="textbox" name="hour" value=""> 時　</label>
-						<label><input type="textbox" name="minutes" value=""> 分　</label>
+						<label><input type="textbox" name="hour" value="11"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
 					</td>
 				</tr>
 			</table>
@@ -214,9 +214,9 @@
 						<th>今月エラー数</th>
 					</tr>
 					<tr>
-						<td>0000</td>
-						<td>0</td>
-						<td>0</td>
+						<td>9999</td>
+						<td>50</td>
+						<td>1500</td>
 						<td>0</td>
 						<td>0</td>
 					</tr>
@@ -241,11 +241,6 @@
 				</table>
 		</li>
 	</ul>
-
-
-
-
-
 
 
 	<div class="hide">
