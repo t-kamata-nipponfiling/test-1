@@ -1,396 +1,267 @@
-﻿<!DOCTYPE HTML>
-<HTML xmlns="http://www.w3.org/1999/xhtml">
-<HEAD>
-<META content="IE=11.0000" http-equiv="X-UA-Compatible">
-<META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<TITLE> 受付番号発行 </TITLE>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>各種設定 - サンプル</title>
+	<script src="js/jquery.js"></script>
+	<script src="js/test.js"></script>
+	<link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+	<h1>各種設定 - サンプル</h1>
+	<h1></h1>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/modal.js"></script>
-<link rel="stylesheet" href="./css/modal.css">
+	<ul class="tab">
+		<li class="select">機能設定</li>
+		<li>時刻設定</li>
+		<li>ＳＭＳ通知設定</li>
+	</ul>
+	<ul class="content">
+		<li>
+			<table class="function">
+				<tr>
+					<td>
+						<nobr>有効バース数: <span>10</span></nobr>
+					</td>
+					<td>
+						<nobr>構内待機所数: <span>10</span></nobr>
+					</td>
+					<td>
 
-<SCRIPT type="text/javascript">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						接車案内順
+					</td>
+					<td>
+						<label><input type="radio" name="guide" value=""> 受付順　</label>
+						<label><input type="radio" name="guide" value=""> 入荷予定時間順　</label>
+						<label><input type="radio" name="guide" value="" checked="checked"> 優先案内順　</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						入荷予定時刻
+					</td>
+					<td>
+						<label><input type="radio" name="plan" value=""> 発注先別　</label>
+						<label><input type="radio" name="plan" value="" checked="checked"> 温度帯別　</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						案内中車両の自動強制退場（一定時間経過後）
+					</td>
+					<td class="exit">
+						<label><input type="checkbox" name="exit" value=""> 設定　</label>　
+						<label class="time related"><input type="textbox" name="minutes" value="60"> 分経過後に強制退場　</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						AMCによる荷降完了操作後の自動強制退場
+					</td>
+					<td>
+						<label class="time"><input type="textbox" name="minutes" value="60"> 分経過後に強制退場　</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						構内待機所
+					</td>
+					<td class="wait">
+						<label><input type="checkbox" name="wait" value=""> 有効　</label>　
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						整理番号発行
+					</td>
+					<td>
+						<label><input type="checkbox" name="exit" value=""> 有効　</label>　
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="3">
+						<nobr>優先案内機能</nobr>
+					</td>
+					<td>
+						優先案内パターン
+					</td>
+					<td class="wait">
+						<nobr><label><input type="radio" name="pattern" value="" checked="checked"> トラックバースへ優先案内　</label></nobr>
+						<nobr><label class="wait related"><input type="radio" name="pattern" value=""> 構内待機所の最後尾へ優先案内　</label></nobr>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						優先案内設定範囲
+					</td>
+					<td>
+						<label class="time"><input type="textbox" name="minutes" value="60"> 分の範囲で優先案内可能　</label>
+						<label><input type="checkbox" name="exit" value=""> 日跨ぎあり　</label>　
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<nobr>新規運送会社の<br>優先案内可能時刻の変更許可（初期値）</nobr>
+					</td>
+					<td>
+						<label><input type="radio" name="permission" value="" checked="checked"> 許可する　</label>
+						<label><input type="radio" name="permission" value=""> 許可しない　</label>
+					</td>
+				</tr>
+			</table>
+		</li>
 
-        function lockScreen() {
-            /*
-             * 現在画面を覆い隠すためのDIVタグを作成する
-             */
-            var divTag = $('<div />').attr("id", "lockDiv");
+		<li class="hide">
+			<table class="time">
+				<tr>
+					<td>
+						日次更新時刻（時　分　秒）
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value="0"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
+						<label><input type="textbox" name="seconds" value="0"> 秒　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						バース案内開始時刻（時　分）
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value="8"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						入荷受付の発注先指定が "予定外" であった場合に<br>表示する入荷受付予定時刻
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value="8"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
+						～　
+						<label><input type="textbox" name="hour" value="11"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						新規の発注先がマスタへ追加された場合に設定する<br>入荷受付予定時刻（初期値）
+					</td>
+					<td>
+						<label><input type="textbox" name="hour" value="8"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
+						～　
+						<label><input type="textbox" name="hour" value="11"> 時　</label>
+						<label><input type="textbox" name="minutes" value="0"> 分　</label>
+					</td>
+				</tr>
+			</table>
+		</li>
 
-            /*
-             * スタイルを設定
-             */
-            divTag.css("z-index", "999")
-                  .css("position", "absolute")
-                  .css("top", "0px")
-                  .css("left", "0px")
-                  .css("right", "0px")
-                  .css("bottom", "0px")
-                  .css("background-color", "gray")
-                  .css("opacity", "0.2");
+		<li class="hide">
+			<table class="monitor">
+				<tr>
+					<th>端末ID</th>
+					<th>本日送信数</th>
+					<th>今月送信数</th>
+					<th>本日エラー数</th>
+					<th>今月エラー数</th>
+				</tr>
+				<tr>
+					<td>9999</td>
+					<td>50</td>
+					<td>1500</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+			</table>
+			<br>
+			<table class="sms">
+				<tr>
+					<td>
+						接車案内時
+					</td>
+					<td>
+						<label><input type="checkbox" name="sms" value=""> 案内通知　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						AMCによる荷降完了操作時
+					</td>
+					<td>
+						<label><input type="checkbox" name="sms" value=""> 荷降完了通知　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						ドライバーによる退場操作時
+					</td>
+					<td>
+						<label><input type="checkbox" name="sms" value=""> 退場通知　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						管理者による強制退場操作時
+					</td>
+					<td>
+						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						案内中車両の自動強制退場時（一定時間経過後）
+					</td>
+					<td>
+						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						荷降中または荷降完車両の自動強制退場時（一定時間経過後）
+					</td>
+					<td>
+						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
+					</td>
+				</tr>
+			</table>
+		</li>
 
-            /*
-             * BODYタグに作成したDIVタグを追加
-             */
-            $('body').append(divTag);
-        }
-    </SCRIPT>
+	</ul>
 
-<STYLE type="text/css">
-        .common-style1 {
-            /* ボーダー無し */
-            border: none;
-            /* 位置 Top Left */
-            vertical-align: top;
-            /* 背景画像 */
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
 
-        .common-style2 {
-            /* 文字サイズを フォントMeiryo UI 太字 */
-            font-family: 'Meiryo UI';
-            font-weight: bold;
-            /* パディング 縦:10px  横:20px */
-            padding: 10px 20px;
-            /* ボーダー1本線  太さ4px */
-            border: inset;
-            border-style: solid;
-            border-width: 3px;
-            border-color: blue;
-            /* テキストの影の指定  影の横幅を1px、縦長を1px、ぼかしを2px、色を#000（黒）に指定 */
-            text-shadow: 1px 1px 2px #000;
-            /* 角丸の指定 */
-            -moz-border-radius: 10px;
-            -webkit-border-radius: 10px;
-            border-radius: 10px;
-            /* 背景色グラデーション */
-            background: linear-gradient(45deg, #FFFFFF, #0066FF, #FFFFFF);
-            /* 文字位置:センター */
-            text-align: center;
-        }
+	<div class="hide">
+		<div class="row">
+			<div class="balloon balloon--top_left"><div>上辺左側</div></div>
+			<div class="balloon balloon--top_center"><div>上辺中央</div></div>
+			<div class="balloon balloon--top_right"><div>上辺右側</div></div>
+		</div>
 
-        .common-style3 {
-            /* 文字サイズを20 フォントMeiryo UI 太字 */
-            font-family: 'Meiryo UI';
-            font-size: 24px;
-            /* パディング 縦:10px  横:20px */
-            padding: 10px 20px;
-            /* ボーダー1本線  太さ1px */
-            border: inset;
-            border-style: solid;
-            border-width: 2px;
-            border-color: black;
-            /* 角丸の指定 */
-            -moz-border-radius: 10px;
-            -webkit-border-radius: 10px;
-            border-radius: 10px;
-            /* 背景色グラデーション */
-            background-color: #FFCCCC;
-            height: 20px;
-            /* 文字位置:センター */
-            text-align: center;
-        }
+		<div class="row">
+			<div class="balloon balloon--right_top"><div>右辺上側</div></div>
+			<div class="balloon balloon--right_middle"><div>右辺中央</div></div>
+			<div class="balloon balloon--right_bottom"><div>右辺下側</div></div>
+		</div>
 
-        .common-style4 {
-            /* 文字サイズを14 フォントMeiryo UI 太字 */
-            font-family: 'Meiryo UI';
-            font-size: 16px;
-            font-weight: bold;
-            /* ボーダーなし */
-            border: none;
-            /* 文字位置:センター */
-            text-align: left;
-        }
-    </STYLE>
+		<div class="row">
+			<div class="balloon balloon--bottom_left"><div>下辺左側</div></div>
+			<div class="balloon balloon--bottom_center"><div>下辺中央</div></div>
+			<div class="balloon balloon--bottom_right"><div>下辺右側</div></div>
+		</div>
 
-<META name="GENERATOR" content="MSHTML 11.00.10570.1001"></HEAD>
-<BODY>
-<FORM id="form1" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'DefaultButtonDummy')"
-action="./LabelPrint.aspx" method="post">
-<DIV class="aspNetHidden"><INPUT name="__EVENTTARGET" id="__EVENTTARGET" type="hidden">
-<INPUT name="__EVENTARGUMENT" id="__EVENTARGUMENT" type="hidden"> <INPUT name="__VIEWSTATE" id="__VIEWSTATE" type="hidden" value="lil44mQe13+w6S2YDv/BkK+98LrqVE9Ao5qOtTYtN1hG9rGWdzenX/sacFayV7E9bfrbfQtSjfl6z/3JFJpIUHDRM5IfGpvoiCSssNzLGm4CCOP4wWk+b+0pqSmUNYFXtNWEQYGcyMu5rFRoEtU7SflNm6I5GULQE4nbNJh/n3WrZQYNVtlGGlsxdIbxvz9r81OMDV5pVFeBdW4/iukdJ0JLcDe+FlPZPKbntnsuu5LwTLb7/X4ckwJLyKFH/mplO2LByBdDWL3lWmUyJNwG1RwDOsVllvkTkD/a7glADjsmZKCjYWiKbW6EU2WVRrRct5innNEzFYNv0D6VCd/Oog==">
-</DIV>
-<SCRIPT type="text/javascript">
-//<![CDATA[
-var theForm = document.forms['form1'];
-if (!theForm) {
-    theForm = document.form1;
-}
-function __doPostBack(eventTarget, eventArgument) {
-    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-        theForm.__EVENTTARGET.value = eventTarget;
-        theForm.__EVENTARGUMENT.value = eventArgument;
-        theForm.submit();
-    }
-}
-//]]>
-</SCRIPT>
-
-<DIV class="aspNetHidden"><INPUT name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" type="hidden" value="76E895FE">
-	 <INPUT name="__EVENTVALIDATION" id="__EVENTVALIDATION" type="hidden" value="c5h3j6YPJ29paeUPi5kOYaCGZ0e3iGNInx3UMIXKg27xotcFX2v1Vd9cCRC3FuC5JTGcnLSnL8RqoH2awmhIXdky3sDVcmoe7PSW9sHvm/Fjh2LR41pNGZyJN/i70bCeHARJ94on7aUQ0/dgqpdf+wqHKD/8jBRK5Q1wZD2LdLgJF5tBFnD4cq6qEwTcAIiZFAE27u5PCPspa9GthznyYNIsHL3dZV/FtjT7gi/WrTA4ZmFNcPtDzJI3aogxGATZzf/UBxNqz16mkg1aLxnHgvowxwMZiRZpR+3N4DJT3ag=">
-</DIV>
-<DIV><INPUT name="ctl00$DefaultButtonDummy" id="DefaultButtonDummy" style="display: none;" onclick="return false;" type="submit" value="Button">
-        </DIV>
-<TABLE style="width: 100%; align-content: center;">
-  <TBODY>
-  <TR>
-    <TD style="width: 10%; height: 70px;"><INPUT name="ctl00$btnTop" class="buttonTypeTop" id="btnTop" style="width: 80%; height: 60%; background-color: rgb(190, 255, 255);" type="button" value="メニュー">
-                                              <BR></TD>
-    <TD style="width: 20%; height: 70px;">
-      <TABLE style="width: 100%; height: 80%; align-content: center;">
-        <TBODY>
-        <TR>
-          <TD class="common-style1" style="width: 20%; height: 40px;"><!-- 日本アクセスロゴ -->
-                                        </TD></TR></TBODY></TABLE>
-      <TABLE style="width: 100%; height: 20%; align-content: center;">
-        <TBODY>
-        <TR>
-          <TD style="width: 100%;"><SPAN class="common-style4" id="lblCenterName"
-            style="width: 100%; display: inline-block;"></SPAN>
-                                   </TD></TR></TBODY></TABLE></TD>
-    <TD class="common-style2" style="width: 40%; height: 70px;"><SPAN id="lblSystemName"
-      style="width: 100%; height: 100%; color: white; font-family: Meiryo UI; font-size: 48px; display: inline-block;">入荷管理システム</SPAN>
-                      </TD>
-    <TD style="width: 20%; vertical-align: text-top;"><SPAN class="common-style3"
-      id="lblFunctionName" style="width: 80%; color: black; display: inline-block;">整理番号発行</SPAN>
-                      </TD>
-    <TD style="width: 10%; height: 70px;"><INPUT name="ctl00$btnBack" class="buttonTypeTop" id="btnBack" style="width: 80%; height: 60%; background-color: rgb(190, 255, 255);" type="button" value="戻る">
-                      </TD></TR></TBODY></TABLE>
-    <LINK href="./css/AMCSystem.css" rel="stylesheet" type="text/css">
-
-<DIV id="container">
-<DIV style="text-align: center;">　　        <SPAN id="ContentPlaceHolder1_LabelMessageArea"
-style="color: red; font-size: 14pt; font-style: normal; font-weight: bold;"></SPAN><BR><BR><BR><SPAN
-id="ContentPlaceHolder1_Label3"
-style="font-size: 24pt;">『整理番号』を発行します。</SPAN><BR><BR><INPUT name="ctl00$ContentPlaceHolder1$TextPrintSheet" disabled="disabled" class="aspNetDisabled" id="ContentPlaceHolder1_TextPrintSheet" style="width: 150px; height: 45px; text-align: center; font-size: 24pt; background-color: white;" type="text" maxlength="1" value="1" autocomplete="off">　
-                <SPAN id="ContentPlaceHolder1_Label2"
-style="font-size: 24pt;">枚</SPAN>                             <SPAN id="ContentPlaceHolder1_Label1"
-style="font-size: 24pt;">　</SPAN>                 <INPUT name="ctl00$ContentPlaceHolder1$btnPlus" id="ContentPlaceHolder1_btnPlus" style="font-size: 24pt;" type="button" value=" ＋ ">
-                <INPUT name="ctl00$ContentPlaceHolder1$btnMinus" id="ContentPlaceHolder1_btnMinus" style="font-size: 24pt;" type="button" value=" － ">
-                <BR><BR></DIV>
-<DIV align="center">
-<DIV id="ContentPlaceHolder1_PanelDrvId" style="width: 600px; height: 80px; background-color: white;"><BR><SPAN
-class="drvidchkbox"><INPUT name="ctl00$ContentPlaceHolder1$CBDriverIDIssue" id="ContentPlaceHolder1_CBDriverIDIssue"
-type="checkbox"><LABEL
-for="ContentPlaceHolder1_CBDriverIDIssue">ドライバーＩＤ発行</LABEL></SPAN>
-  </DIV></DIV>
-<DIV class="boxBottom"><INPUT name="ctl00$ContentPlaceHolder1$btnPrint" class="buttonTypeTop" id="btn_open" style="width: 180px; height: 75px; font-size: 24pt; background-color: rgb(190, 255, 255);" type="button" value="次へ">&nbsp;
-           </DIV></DIV></FORM>
-
-	<div id="modal" style="display: none;">
-		<div id="modal_content">
-			<div id="modal_close">
-				<button id="btn_close">×</button>
-			</div>
-			<p>ドライバーＩＤはお持ちですか？</p>
-			<button id="btn_style">持っている</button>
-			　
-			<button id="btn_style">持っていない</button>
+		<div class="row">
+			<div class="balloon balloon--left_top"><div>左辺上側</div></div>
+			<div class="balloon balloon--left_middle"><div>左辺中央</div></div>
+			<div class="balloon balloon--left_bottom"><div>左辺下側</div></div>
 		</div>
 	</div>
 
-	<div style="position: absolute; bottom: 0;">
-		<p>背景色サンプル（クリックで変更）</p>
-		<div style="height: 300px; width: 680px; overflow-y:scroll;">
-			<table id="color_table">
-				<tr>
-					<td style="background-color:#000000">black<br><br></td>
-					<td style="background-color:#f0f8ff">aliceblue<br><br></td>
-					<td style="background-color:#008b8b">darkcyan<br><br></td>
-					<td style="background-color:#ffffe0">lightyellow<br><br></td>
-					<td style="background-color:#ff7f50">coral<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#696969">dimgray<br><br></td>
-					<td style="background-color:#e6e6fa">lavender<br><br></td>
-					<td style="background-color:#008080">teal<br><br></td>
-					<td style="background-color:#fafad2">lightgoldenrodyellow<br><br></td>
-					<td style="background-color:#ff6347">tomato<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#808080">gray<br><br></td>
-					<td style="background-color:#b0c4de">lightsteelblue<br><br></td>
-					<td style="background-color:#2f4f4f">darkslategray<br><br></td>
-					<td style="background-color:#fffacd">lemonchiffon<br><br></td>
-					<td style="background-color:#ff4500">orangered<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#a9a9a9">darkgray<br><br></td>
-					<td style="background-color:#778899">lightslategray<br><br></td>
-					<td style="background-color:#006400">darkgreen<br><br></td>
-					<td style="background-color:#f5deb3">wheat<br><br></td>
-					<td style="background-color:#ff0000">red<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#c0c0c0">silver<br><br></td>
-					<td style="background-color:#708090">slategray<br><br></td>
-					<td style="background-color:#008000">green<br><br></td>
-					<td style="background-color:#deb887">burlywood<br><br></td>
-					<td style="background-color:#dc143c">crimson<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#d3d3d3">lightgray<br><br></td>
-					<td style="background-color:#4682b4">steelblue<br><br></td>
-					<td style="background-color:#228b22">forestgreen<br><br></td>
-					<td style="background-color:#d2b48c">tan<br><br></td>
-					<td style="background-color:#c71585">mediumvioletred<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#dcdcdc">gainsboro<br><br></td>
-					<td style="background-color:#4169e1">royalblue<br><br></td>
-					<td style="background-color:#2e8b57">seagreen<br><br></td>
-					<td style="background-color:#f0e68c">khaki<br><br></td>
-					<td style="background-color:#ff1493">deeppink<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#f5f5f5">whitesmoke<br><br></td>
-					<td style="background-color:#191970">midnightblue<br><br></td>
-					<td style="background-color:#3cb371">mediumseagreen<br><br></td>
-					<td style="background-color:#ffff00">yellow<br><br></td>
-					<td style="background-color:#ff69b4">hotpink<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffffff">white<br><br></td>
-					<td style="background-color:#000080">navy<br><br></td>
-					<td style="background-color:#66cdaa">mediumaquamarine<br><br></td>
-					<td style="background-color:#ffd700">gold<br><br></td>
-					<td style="background-color:#db7093">palevioletred<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#fffafa">snow<br><br></td>
-					<td style="background-color:#00008b">darkblue<br><br></td>
-					<td style="background-color:#8fbc8f">darkseagreen<br><br></td>
-					<td style="background-color:#ffa500">orange<br><br></td>
-					<td style="background-color:#ffc0cb">pink<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#f8f8ff">ghostwhite<br><br></td>
-					<td style="background-color:#0000cd">mediumblue<br><br></td>
-					<td style="background-color:#7fffd4">aquamarine<br><br></td>
-					<td style="background-color:#f4a460">sandybrown<br><br></td>
-					<td style="background-color:#ffb6c1">lightpink<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#fffaf0">floralwhite<br><br></td>
-					<td style="background-color:#0000ff">blue<br><br></td>
-					<td style="background-color:#98fb98">palegreen<br><br></td>
-					<td style="background-color:#ff8c00">darkorange<br><br></td>
-					<td style="background-color:#d8bfd8">thistle<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#faf0e6">linen<br><br></td>
-					<td style="background-color:#1e90ff">dodgerblue<br><br></td>
-					<td style="background-color:#90ee90">lightgreen<br><br></td>
-					<td style="background-color:#daa520">goldenrod<br><br></td>
-					<td style="background-color:#ff00ff">magenta<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#faebd7">antiquewhite<br><br></td>
-					<td style="background-color:#6495ed">cornflowerblue<br><br></td>
-					<td style="background-color:#00ff7f">springgreen<br><br></td>
-					<td style="background-color:#cd853f">peru<br><br></td>
-					<td style="background-color:#ff00ff">fuchsia<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffefd5">papayawhip<br><br></td>
-					<td style="background-color:#00bfff">deepskyblue<br><br></td>
-					<td style="background-color:#00fa9a">mediumspringgreen<br><br></td>
-					<td style="background-color:#b8860b">darkgoldenrod<br><br></td>
-					<td style="background-color:#ee82ee">violet<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffebcd">blanchedalmond<br><br></td>
-					<td style="background-color:#87cefa">lightskyblue<br><br></td>
-					<td style="background-color:#7cfc00">lawngreen<br><br></td>
-					<td style="background-color:#d2691e">chocolate<br><br></td>
-					<td style="background-color:#dda0dd">plum<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffe4c4">bisque<br><br></td>
-					<td style="background-color:#87ceeb">skyblue<br><br></td>
-					<td style="background-color:#7fff00">chartreuse<br><br></td>
-					<td style="background-color:#a0522d">sienna<br><br></td>
-					<td style="background-color:#da70d6">orchid<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffe4b5">moccasin<br><br></td>
-					<td style="background-color:#add8e6">lightblue<br><br></td>
-					<td style="background-color:#adff2f">greenyellow<br><br></td>
-					<td style="background-color:#8b4513">saddlebrown<br><br></td>
-					<td style="background-color:#ba55d3">mediumorchid<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffdead">navajowhite<br><br></td>
-					<td style="background-color:#b0e0e6">powderblue<br><br></td>
-					<td style="background-color:#00ff00">lime<br><br></td>
-					<td style="background-color:#800000">maroon<br><br></td>
-					<td style="background-color:#9932cc">darkorchid<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffdab9">peachpuff<br><br></td>
-					<td style="background-color:#afeeee">paleturquoise<br><br></td>
-					<td style="background-color:#32cd32">limegreen<br><br></td>
-					<td style="background-color:#8b0000">darkred<br><br></td>
-					<td style="background-color:#9400d3">darkviolet<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#ffe4e1">mistyrose<br><br></td>
-					<td style="background-color:#e0ffff">lightcyan<br><br></td>
-					<td style="background-color:#9acd32">yellowgreen<br><br></td>
-					<td style="background-color:#a52a2a">brown<br><br></td>
-					<td style="background-color:#8b008b">darkmagenta<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#fff0f5">lavenderblush<br><br></td>
-					<td style="background-color:#00ffff">cyan<br><br></td>
-					<td style="background-color:#556b2f">darkolivegreen<br><br></td>
-					<td style="background-color:#b22222">firebrick<br><br></td>
-					<td style="background-color:#800080">purple<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#fff5ee">seashell<br><br></td>
-					<td style="background-color:#00ffff">aqua<br><br></td>
-					<td style="background-color:#6b8e23">olivedrab<br><br></td>
-					<td style="background-color:#cd5c5c">indianred<br><br></td>
-					<td style="background-color:#4b0082">indigo<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#fdf5e6">oldlace<br><br></td>
-					<td style="background-color:#40e0d0">turquoise<br><br></td>
-					<td style="background-color:#808000">olive<br><br></td>
-					<td style="background-color:#bc8f8f">rosybrown<br><br></td>
-					<td style="background-color:#483d8b">darkslateblue<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#fffff0">ivory<br><br></td>
-					<td style="background-color:#48d1cc">mediumturquoise<br><br></td>
-					<td style="background-color:#bdb76b">darkkhaki<br><br></td>
-					<td style="background-color:#e9967a">darksalmon<br><br></td>
-					<td style="background-color:#8a2be2">blueviolet<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#f0fff0">honeydew<br><br></td>
-					<td style="background-color:#00ced1">darkturquoise<br><br></td>
-					<td style="background-color:#eee8aa">palegoldenrod<br><br></td>
-					<td style="background-color:#f08080">lightcoral<br><br></td>
-					<td style="background-color:#9370db">mediumpurple<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#f5fffa">mintcream<br><br></td>
-					<td style="background-color:#20b2aa">lightseagreen<br><br></td>
-					<td style="background-color:#fff8dc">cornsilk<br><br></td>
-					<td style="background-color:#fa8072">salmon<br><br></td>
-					<td style="background-color:#6a5acd">slateblue<br><br></td>
-				</tr>
-				<tr>
-					<td style="background-color:#f0ffff">azure<br><br></td>
-					<td style="background-color:#5f9ea0">cadetblue<br><br></td>
-					<td style="background-color:#f5f5dc">beige<br><br></td>
-					<td style="background-color:#ffa07a">lightsalmon<br><br></td>
-					<td style="background-color:#7b68ee">mediumslateblue<br><br></td>
-				</tr>
-			</table>
-		</div><br><br>
-	</div>
-           </BODY></HTML>
+
+</body>
+</html>
