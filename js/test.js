@@ -14,10 +14,10 @@ $(function() {
 	});
 	$('.exit input').trigger('change');
 
-	$('.temperature input').change(function() {
-		$('.temperature .related input').prop('disabled', $('.temperature input').prop('checked'));
-		$('.temperature .related').css({ color: $('.temperature input').prop('checked') ? 'darkgray' : 'black' });
+	$('.wait input').change(function() {
+		$('.wait .related input').prop('disabled', !$('.wait input').prop('checked'));
+		$('.wait .related').css({ color: $('.wait input').prop('checked') ? 'black' : 'darkgray' });
 	});
-	$('.temperature input').trigger('change');
+	$('.wait input').trigger('change');
 
 });

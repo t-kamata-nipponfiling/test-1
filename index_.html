@@ -15,17 +15,19 @@
 		<li class="select">機能設定</li>
 		<li>時刻設定</li>
 		<li>ＳＭＳ通知設定</li>
-		<li>システム状態監視</li>
 	</ul>
 	<ul class="content">
 		<li>
 			<table class="function">
 				<tr>
-					<td colspan="2">
-						有効バース数
+					<td>
+						<nobr>有効バース数: <span>10</span></nobr>
 					</td>
 					<td>
-						10
+						<nobr>構内待機所数: <span>10</span></nobr>
+					</td>
+					<td>
+
 					</td>
 				</tr>
 				<tr>
@@ -33,13 +35,23 @@
 						接車案内順
 					</td>
 					<td>
-						<label><input type="radio" name="guide" value=""> 先着順　</label>
-						<label><input type="radio" name="guide" value="" checked="checked"> 入荷予定時間順　</label>
+						<label><input type="radio" name="guide" value=""> 受付順　</label>
+						<label><input type="radio" name="guide" value=""> 入荷予定時間順　</label>
+						<label><input type="radio" name="guide" value="" checked="checked"> 優先案内順　</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						案内中車両の自動強制退場
+						入荷予定時刻
+					</td>
+					<td>
+						<label><input type="radio" name="plan" value=""> 発注先別　</label>
+						<label><input type="radio" name="plan" value="" checked="checked"> 温度帯別　</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						案内中車両の自動強制退場（一定時間経過後）
 					</td>
 					<td class="exit">
 						<label><input type="checkbox" name="exit" value=""> 設定　</label>　
@@ -55,51 +67,49 @@
 					</td>
 				</tr>
 				<tr>
-					<td rowspan="5">
-						大型モニタの表示
+					<td colspan="2">
+						構内待機所
 					</td>
-					<td>
-						画面
-					</td>
-					<td class="display">
-						<label><input type="radio" name="display" value="" checked="checked"> リスト　</label>
-						<label><input type="radio" name="display" value=""> マトリクス　</label>
+					<td class="wait">
+						<label><input type="checkbox" name="wait" value=""> 有効　</label>　
 					</td>
 				</tr>
 				<tr>
-					<td rowspan="2">
-						温度帯
+					<td colspan="2">
+						整理番号発行
 					</td>
-					<td class="temperature">
-						<label><input type="radio" name="temperature" value="" checked="checked"> 全温度帯　</label>
-						<label><input type="radio" name="temperature" value=""> 各温度帯毎　</label>　
+					<td>
+						<label><input type="checkbox" name="exit" value=""> 有効　</label>　
 					</td>
 				</tr>
 				<tr>
-					<td class="temperature">
-						<label class="related"><input type="checkbox" name="temperature" value="" checked="checked"> ドライ　</label>
-						<label class="related"><input type="checkbox" name="temperature" value="" checked="checked"> チルド　</label>
-						<label class="related"><input type="checkbox" name="temperature" value="" checked="checked"> フローズン　</label>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						状態
+					<td rowspan="3">
+						<nobr>優先案内機能</nobr>
 					</td>
 					<td>
-						<label><input type="checkbox" name="monitor" value="1" checked> 待機　</label>
-						<label><input type="checkbox" name="monitor" value="2" checked> 案内中　</label>
-						<label><input type="checkbox" name="monitor" value="3" checked> 荷降中　</label>
-						<label><input type="checkbox" name="monitor" value="4"> 荷降完　</label>
-						<label><input type="checkbox" name="monitor" value="5"> 退場済　</label>
+						優先案内パターン
+					</td>
+					<td class="wait">
+						<nobr><label><input type="radio" name="pattern" value="" checked="checked"> トラックバースへ優先案内　</label></nobr>
+						<nobr><label class="wait related"><input type="radio" name="pattern" value=""> 構内待機所の最後尾へ優先案内　</label></nobr>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						ページ切替期間
+						優先案内設定範囲
 					</td>
-					<td class="display">
-							<label class="time related"><input type="textbox" name="minutes" value="10"> 秒毎にページ切替　</label>
+					<td>
+						<label class="time"><input type="textbox" name="minutes" value="60"> 分の範囲で優先案内可能　</label>
+						<label><input type="checkbox" name="exit" value=""> 日跨ぎあり　</label>　
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<nobr>新規運送会社の<br>優先案内可能時刻の変更許可（初期値）</nobr>
+					</td>
+					<td>
+						<label><input type="radio" name="permission" value="" checked="checked"> 許可する　</label>
+						<label><input type="radio" name="permission" value=""> 許可しない　</label>
 					</td>
 				</tr>
 			</table>
@@ -140,7 +150,7 @@
 				</tr>
 				<tr>
 					<td>
-						新規の発注先がマスタへ追加された場合に<br>設定する入荷受付予定時刻（初期設定）
+						新規の発注先がマスタへ追加された場合に設定する<br>入荷受付予定時刻（初期値）
 					</td>
 					<td>
 						<label><input type="textbox" name="hour" value="8"> 時　</label>
@@ -154,6 +164,23 @@
 		</li>
 
 		<li class="hide">
+			<table class="monitor">
+				<tr>
+					<th>端末ID</th>
+					<th>本日送信数</th>
+					<th>今月送信数</th>
+					<th>本日エラー数</th>
+					<th>今月エラー数</th>
+				</tr>
+				<tr>
+					<td>9999</td>
+					<td>50</td>
+					<td>1500</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+			</table>
+			<br>
 			<table class="sms">
 				<tr>
 					<td>
@@ -189,7 +216,7 @@
 				</tr>
 				<tr>
 					<td>
-						案内中車両の自動（一定時間経過後）強制退場時
+						案内中車両の自動強制退場時（一定時間経過後）
 					</td>
 					<td>
 						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
@@ -197,7 +224,7 @@
 				</tr>
 				<tr>
 					<td>
-						荷降中車両の自動（一定時間経過後）強制退場時
+						荷降中または荷降完車両の自動強制退場時（一定時間経過後）
 					</td>
 					<td>
 						<label><input type="checkbox" name="sms" value=""> 強制退場通知　</label>
@@ -206,43 +233,6 @@
 			</table>
 		</li>
 
-		<li class="hide">
-				<span class="header">SMS送信状態</span>
-				<table class="monitor">
-					<tr>
-						<th>端末ID</th>
-						<th>本日送信数</th>
-						<th>今月送信数</th>
-						<th>本日エラー数</th>
-						<th>今月エラー数</th>
-					</tr>
-					<tr>
-						<td>9999</td>
-						<td>50</td>
-						<td>1500</td>
-						<td>0</td>
-						<td>0</td>
-					</tr>
-				</table>
-				<br>
-				<span class="header">常駐プログラム状態</span>
-				<table class="monitor">
-					<tr>
-						<th>日時更新</th>
-						<th>一括出力</th>
-						<th>上位連携</th>
-						<th>案内監視</th>
-						<th>印刷管理</th>
-					</tr>
-					<tr>
-						<td class="status1">正常</td>
-						<td class="status1">正常</td>
-						<td class="status1">正常</td>
-						<td class="status3">警告</td>
-						<td class="status2">異常</td>
-					</tr>
-				</table>
-		</li>
 	</ul>
 
 
