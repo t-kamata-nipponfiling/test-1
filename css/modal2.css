@@ -1,0 +1,40 @@
+label {
+	font-family: Meiryo;
+	font-size: 120%;
+}
+input {
+	font-family: Meiryo;
+	font-size: 100%;
+	border: 1px solid gray;
+	border-radius: 2px;
+	padding: 5px 15px;
+}
+.chain-code {
+	width: 100px;
+}
+.chain-name {
+	width: 415px;
+	background-color: blue;
+	color: white;
+}
+.color-picker {
+	width: 450px;
+	margin-left: 155px;
+}
+.background-colors tr td, .text-colors tr td {
+	font-family: Meiryo;
+	font-size: 120%;
+	width: 10px;
+	height: 10px;
+	border: 1px solid gray;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.background-colors {
+	border-radius: 3px;
+	float: left;
+}
+.text-colors {
+	border-radius: 3px;
+	float: right;
+}
