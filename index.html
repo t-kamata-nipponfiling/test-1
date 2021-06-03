@@ -11,13 +11,24 @@
 	<script type="text/javascript" src="./js/jquery.ui.position.min.js"></script>
 	<script type="text/javascript" src="./js/jquery.ui.timepicker.js"></script>
 	<script type="text/javascript" src="./js/jquery.ui.timepicker-ja.js"></script>
+	<link rel="stylesheet" href="./css/jquery.ptTimeSelect.css" />
+	<script type="text/javascript" src="./js/jquery.ptTimeSelect.js"></script>
 </head>
 <body>
-	<label style="font-size: 30px;">到着時刻：</label>
-	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time"></input>
+	<br>
+	<label style="font-size: 30px;">(Sample-A) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time1"></input>
 	<script>
 		(function($) {
-			$('#time').timepicker();
+			$('#time1').timepicker();
+		})(jQuery);
+	</script>
+	　　　
+	<label style="font-size: 30px;">(Sample-B) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time2"></input>
+	<script type="text/javascript">
+		(function($) {
+			$('#time2').ptTimeSelect();
 		})(jQuery);
 	</script>
 </body>
