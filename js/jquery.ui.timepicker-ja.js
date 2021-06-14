@@ -21,7 +21,7 @@ jQuery(function($){
 										// 'both': when the input gets focus and when the button is clicked
 		button: null,					// jQuery selector that acts as button trigger (ex: '#trigger_button')
 		showAnim: 'show',				// Name of jQuery animation for popup
-		duration: 400,
+		duration: 500,
 		showOptions: {},				// Options for enhanced animations
 		appendText: '',					// Display text following the input box, e.g. showing the format
 		
