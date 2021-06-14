@@ -50,7 +50,7 @@
             showOn: 'focus',    // 'focus' for popup on focus,
                                 // 'button' for trigger button, or 'both' for either (not yet implemented)
             button: null,                   // 'button' element that will trigger the timepicker
-            showAnim: 'fadeIn',             // Name of jQuery animation for popup
+            showAnim: 'show',               // Name of jQuery animation for popup
             duration: 500,
             showOptions: {},                // Options for enhanced animations
             appendText: '',                 // Display text following the input box, e.g. showing the format
