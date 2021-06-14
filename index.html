@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Timepicker</title>
-	<link rel="stylesheet" href="./css/jquery-ui.css">
+	<link rel="stylesheet" href="./css/jquery.ui.css">
 	<link rel="stylesheet" href="./css/jquery.ui.timepicker.css">
 	<script type="text/javascript" src="./js/jquery-1.9.0.min.js"></script>
 	<script type="text/javascript" src="./js/jquery.ui.core.min.js"></script>
@@ -11,25 +11,83 @@
 	<script type="text/javascript" src="./js/jquery.ui.position.min.js"></script>
 	<script type="text/javascript" src="./js/jquery.ui.timepicker.js"></script>
 	<script type="text/javascript" src="./js/jquery.ui.timepicker-ja.js"></script>
-	<link rel="stylesheet" href="./css/jquery.ptTimeSelect.css" />
-	<script type="text/javascript" src="./js/jquery.ptTimeSelect.js"></script>
 </head>
-<body>
-	<br>
-	<label style="font-size: 30px;">(Sample-A) 到着時刻：</label>
-	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time1"></input>
+
+<body class='ui-widget'>
+	<br><label style="font-size: 30px;">＜12時間表示＞</label><br>
+	<br><label style="font-size: 30px;">　1) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time12-1">
+	<label style="font-size: 20px;">　※ AM/PM表示, 4行表示, 時分ゼロ埋め</label><br>
 	<script>
 		(function($) {
-			$('#time1').timepicker();
+			$('#time12-1').timepicker({ showPeriod: true, showPeriodLabels: true, rows: 4, showLeadingZero: true, showMinutesLeadingZero: true, defaultTime: '' });
 		})(jQuery);
 	</script>
-	　　　
-	<label style="font-size: 30px;">(Sample-B) 到着時刻：</label>
-	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time2"></input>
-	<script type="text/javascript">
+
+	<br><label style="font-size: 30px;">　2) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time12-2">
+	<label style="font-size: 20px;">　※ AM/PM表示, 4行表示, 時分ゼロ抑制</label><br>
+	<script>
 		(function($) {
-			$('#time2').ptTimeSelect();
+			$('#time12-2').timepicker({ showPeriod: true, showPeriodLabels: true, rows: 4, showLeadingZero: false, showMinutesLeadingZero: false, defaultTime: '' });
+		})(jQuery);
+	</script>
+
+	<br><label style="font-size: 30px;">　3) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time12-3">
+	<label style="font-size: 20px;">　※ AM/PM表示, 2行表示, 時分ゼロ埋め</label><br>
+	<script>
+		(function($) {
+			$('#time12-3').timepicker({ showPeriod: true, showPeriodLabels: true, rows: 2, showLeadingZero: true, showMinutesLeadingZero: true, defaultTime: '' });
+		})(jQuery);
+	</script>
+
+	<br><label style="font-size: 30px;">　4) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time12-4">
+	<label style="font-size: 20px;">　※ AM/PM表示, 2行表示, 時分ゼロ抑制</label><br>
+	<script>
+		(function($) {
+			$('#time12-4').timepicker({ showPeriod: true, showPeriodLabels: true, rows: 2, showLeadingZero: false, showMinutesLeadingZero: false, defaultTime: '' });
+		})(jQuery);
+	</script>
+
+	<br><label style="font-size: 30px;">＜24時間表示＞</label><br>
+
+	<br><label style="font-size: 30px;">　1) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time24-1">
+	<label style="font-size: 20px;">　※ AM/PM非表示, 4行表示, 時分ゼロ埋め</label><br>
+	<script>
+		(function($) {
+			$('#time24-1').timepicker({ showPeriod: false, showPeriodLabels: false, rows: 4, showLeadingZero: true, showMinutesLeadingZero: true, defaultTime: '' });
+		})(jQuery);
+	</script>
+
+	<br><label style="font-size: 30px;">　2) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time24-2">
+	<label style="font-size: 20px;">　※ AM/PM非表示, 4行表示, 時分ゼロ抑制</label><br>
+	<script>
+		(function($) {
+			$('#time24-2').timepicker({ showPeriod: false, showPeriodLabels: false, rows: 4, showLeadingZero: false, showMinutesLeadingZero: false, defaultTime: '' });
+		})(jQuery);
+	</script>
+
+	<br><label style="font-size: 30px;">　3) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time24-3">
+	<label style="font-size: 20px;">　※ AM/PM非表示, 2行表示, 時分ゼロ埋め</label><br>
+	<script>
+		(function($) {
+			$('#time24-3').timepicker({ showPeriod: false, showPeriodLabels: false, rows: 2, showLeadingZero: true, showMinutesLeadingZero: true, defaultTime: '' });
+		})(jQuery);
+	</script>
+
+	<br><label style="font-size: 30px;">　4) 到着時刻：</label>
+	<input type="text" style="width: 200px; height: 30px; font-size: 30px; text-align: center;" id="time24-4">
+	<label style="font-size: 20px;">　※ AM/PM非表示, 2行表示, 時分ゼロ抑制</label><br>
+	<script>
+		(function($) {
+			$('#time24-4').timepicker({ showPeriod: false, showPeriodLabels: false, rows: 2, showLeadingZero: false, showMinutesLeadingZero: false, defaultTime: '' });
 		})(jQuery);
 	</script>
 </body>
+
 </html>

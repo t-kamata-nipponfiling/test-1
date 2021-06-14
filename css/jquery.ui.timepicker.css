@@ -1,57 +1,82 @@
-/*
- * Timepicker stylesheet
- * Highly inspired from datepicker
- * FG - Nov 2010 - Web3R 
- *
- * version 0.0.3 : Fixed some settings, more dynamic
- * version 0.0.4 : Removed width:100% on tables
- * version 0.1.1 : set width 0 on tables to fix an ie6 bug
- */
+/* ----------------------------------
+ * timepicker stylesheet
+---------------------------------- */
 
-.ui-timepicker-inline { display: inline; }
-
-#ui-timepicker-div { padding: 0.2em; zoom: 100%; }
-.ui-timepicker-table { display: inline-table; width: 0; }
-.ui-timepicker-table table { margin:0.15em 0 0 0; border-collapse: collapse; }
-
-.ui-timepicker-hours, .ui-timepicker-minutes { padding: 0.2em;  }
-
-.ui-timepicker-table .ui-timepicker-title { line-height: 1.8em; text-align: center; }
-.ui-timepicker-table td { padding: 0.1em; width: 2.2em; }
-.ui-timepicker-table th.periods { padding: 0.1em; width: 2.2em; }
-
-/* span for disabled cells */
-.ui-timepicker-table td span {
-	display:block;
-    padding:0.2em 0.3em 0.2em 0.5em;
-    width: 1.2em;
-
-    text-align:right;
-    text-decoration:none;
+#ui-timepicker-div {
+    padding: 0.2em;
 }
+.ui-timepicker-inline {
+    display: inline;
+}
+.ui-timepicker-table {
+    display: inline-table; width: 0; font-size: 150%;
+    border-radius: .2em; box-shadow: .1em .1em .2em dimgray;
+}
+.ui-timepicker-table table {
+    margin: 0.15em 0 0 0; border-collapse: collapse;
+}
+.ui-timepicker-hours, .ui-timepicker-minutes {
+    padding: 0.2em;
+}
+.ui-timepicker-table .ui-timepicker-title {
+    line-height: 1.8em; text-align: center;
+    border-radius: .2em; background: aliceblue; color: dimgray;
+}
+.ui-timepicker-table td {
+    padding: 0.1em; width: 2.2em;
+}
+.ui-timepicker-table th.periods {
+    padding: 0.1em; width: 2.2em;
+}
+
 /* anchors for clickable cells */
 .ui-timepicker-table td a {
-    display:block;
-    padding:0.2em 0.3em 0.2em 0.5em;
-    width: 1.2em;
-    cursor: pointer;
-    text-align:right;
-    text-decoration:none;
+    display: block; padding: 0.3em 0.3em 0.3em 0.3em; width: 1.2em; text-align: center; text-decoration: none; cursor: pointer;
+    border-radius: .2em; box-shadow: .1em .1em .2em dimgray;
 }
-
-
+/* span for disabled cells */
+.ui-timepicker-table td span {
+    display: block; padding: 0.3em 0.3em 0.3em 0.3em; width: 1.2em; text-align: center; text-decoration: none;
+    border-radius: .2em; box-shadow: .1em .1em .2em dimgray;
+}
 /* buttons and button pane styling */
 .ui-timepicker .ui-timepicker-buttonpane {
-    background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0;
+    background-image: none; margin: .7em 0 0 0; padding: 0 .2em; border-left: 0; border-right: 0; border-bottom: 0;
 }
-.ui-timepicker .ui-timepicker-buttonpane button { margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
-/* The close button */
-.ui-timepicker .ui-timepicker-close { float: right }
+.ui-timepicker .ui-timepicker-buttonpane button {
+    margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width: auto; overflow: visible;
+}
+/* close button */
+.ui-timepicker .ui-timepicker-close {
+    float: right;
+}
+/* now button */
+.ui-timepicker .ui-timepicker-now {
+    float: left;
+}
+/* deselect button */
+.ui-timepicker .ui-timepicker-deselect {
+    float: left;
+}
 
-/* the now button */
-.ui-timepicker .ui-timepicker-now { float: left; }
-
-/* the deselect button */
-.ui-timepicker .ui-timepicker-deselect { float: left; }
-
-
+.ui-widget-content .ui-state-default {
+	border: 1px solid #dddddd;
+	background: white 50% 50% repeat-x;
+}
+.ui-widget-content .ui-state-hover, .ui-widget-content .ui-state-focus {
+	border: 1px solid #dddddd;
+	background: lightyellow 50% 50% repeat-x;
+}
+.ui-widget-content .ui-state-active {
+	border: 1px solid #dddddd;
+	background: lightyellow 50% 50% repeat-x;
+}
+.ui-widget-content .hour-am {
+    color: royalblue;
+}
+.ui-widget-content .hour-pm {
+    color: deeppink;
+}
+.ui-widget-content .minute {
+    color: darkcyan;
+}
