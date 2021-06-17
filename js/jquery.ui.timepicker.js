@@ -62,6 +62,7 @@
             timeSeparator: ':',             // The character to use to separate hours and minutes.
             timeWithoutSeparator: true,     // Accept time input without seperator.
             periodSeparator: ' ',           // The character to use to separate the time from the time period.
+            showPeriodType: '',
             showPeriod: false,              // Define whether or not to show AM/PM with selected time
             showPeriodLabels: true,         // Show the AM/PM labels on the left of the time picker
             showLeadingZero: true,          // Define whether or not to show a leading zero for hours < 10. [true/false]
@@ -752,8 +753,11 @@
             if ((hour > 12) && showPeriod) {
                 displayHour = hour - 12;
             }
-            if ((displayHour == 0) && showPeriod) {
-                displayHour = 12;
+            // if ((displayHour == 0) && showPeriod) {
+            //     displayHour = 12;
+            // }
+            if ((displayHour == 0 || displayHour == 12) && showPeriod) {
+                displayHour = (this._get(inst, 'showPeriodType') == 'ja' ? 0 : 12);
             }
             if ((displayHour < 10) && showLeadingZero) {
                 displayHour = '0' + displayHour;
@@ -1186,25 +1190,35 @@
                 showMinutes = this._get(inst, 'showMinutes'),
                 optionalMinutes = this._get(inst, 'optionalMinutes'),
                 showPeriod = (this._get(inst, 'showPeriod') == true),
-                p = timeVal.indexOf(timeSeparator);
+                // p = timeVal.indexOf(timeSeparator);
+                time = timeVal.replace(amPmText[0], '').replace(amPmText[1], '').replace(' ', ''),
+                p = time.indexOf(timeSeparator);
 
             // check if time separator found
             if (p != -1) {
-                retVal.hours = parseInt(timeVal.substr(0, p), 10);
-                retVal.minutes = parseInt(timeVal.substr(p + 1), 10);
+                // retVal.hours = parseInt(timeVal.substr(0, p), 10);
+                // retVal.minutes = parseInt(timeVal.substr(p + 1), 10);
+                retVal.hours = parseInt(time.substr(0, p), 10);
+                retVal.minutes = parseInt(time.substr(p + 1), 10);
             }
             // check for hours only
             else if ( (showHours) && ( !showMinutes || optionalMinutes ) ) {
-                retVal.hours = parseInt(timeVal, 10);
+                // retVal.hours = parseInt(timeVal, 10);
+                retVal.hours = parseInt(time, 10);
             }
             // check for minutes only
             else if ( ( ! showHours) && (showMinutes) ) {
-                retVal.minutes = parseInt(timeVal, 10);
+                // retVal.minutes = parseInt(timeVal, 10);
+                retVal.minutes = parseInt(time, 10);
             }
             // check if time seperator requirement is waived and at least 4 characters were entered
-            else if ( (timeWithoutSeparator) && (timeVal.length >= 4) ){
-                retVal.hours = parseInt(timeVal.substr(0, 2), 10);
-                retVal.minutes = parseInt(timeVal.substr(2, 3), 10);
+            // else if ( (timeWithoutSeparator) && (timeVal.length >= 4) ){
+            //     retVal.hours = parseInt(timeVal.substr(0, 2), 10);
+            //     retVal.minutes = parseInt(timeVal.substr(2, 3), 10);
+            // }
+            else if ( (timeWithoutSeparator) && (time.length >= 4) ){
+                retVal.hours = parseInt(time.substr(0, 2), 10);
+                retVal.minutes = parseInt(time.substr(2, 3), 10);
             }
 
             if (showHours) {
@@ -1350,8 +1364,11 @@
             if (selectedMinutes == -1) { selectedMinutes = 0 }
 
             if (showPeriod) {
-                if (inst.hours == 0) {
-                    displayHours = 12;
+                // if (inst.hours == 0) {
+                //     displayHours = 12;
+                // }
+                if (inst.hours == 0 || inst.hours == 12) {
+                    displayHours = (this._get(inst, 'showPeriodType') == 'ja' ? 0 : 12);
                 }
                 if (inst.hours < 12) {
                     period = amPmText[0];
@@ -1380,7 +1397,14 @@
                 parsedTime += m;
             }
             if (showHours) {
-                if (period.length > 0) { parsedTime += this._get(inst, 'periodSeparator') + period; }
+                // if (period.length > 0) { parsedTime += this._get(inst, 'periodSeparator') + period; }
+                if (period.length > 0) {
+                    if (this._get(inst, 'showPeriodType') == 'ja') {
+                        parsedTime = period + this._get(inst, 'periodSeparator') + parsedTime;
+                    } else {
+                        parsedTime = parsedTime + this._get(inst, 'periodSeparator') + period;
+                    }
+                }
             }
 
             return parsedTime;

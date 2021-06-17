@@ -7,7 +7,8 @@ jQuery(function($){
 		timeSeparator: ':',				// The character to use to separate hours and minutes (default: ':')
 		timeWithoutSeparator: true,     // Accept time input without seperator (default: true).
 		periodSeparator: ' ',			// The character to use to separate the time from the time period
-		showPeriod: false,				// Define whether or not to show AM/PM with selected time (default: false)
+		showPeriod: true,				// Define whether or not to show AM/PM with selected time (default: false)
+		showPeriodType: 'ja',
 		showPeriodLabels: true,			// Define if the AM/PM labels on the left are displayed (default: true)
 		showLeadingZero: true,			// Define whether or not to show a leading zero for hours < 10 (default: true)
 		showMinutesLeadingZero: true,	// Define whether or not to show a leading zero for minutes < 10 (default: true)

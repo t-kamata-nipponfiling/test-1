@@ -26,7 +26,7 @@
     padding: 0.1em; width: 2.2em;
 }
 .ui-timepicker-table th.periods {
-    padding: 0.1em; width: 2.2em;
+    padding: 0.1em; width: 2.2em; white-space: nowrap;
 }
 
 /* anchors for clickable cells */
@@ -79,4 +79,20 @@
 }
 .ui-widget-content .minute {
     color: darkcyan;
+}
+
+/* ----------------------------------
+ * display stylesheet
+---------------------------------- */
+.ui-widget.mock {
+    margin: 30px auto;
+}
+.ui-widget.mock th {
+    font-size: 30px; color: red; padding: 1em; text-align: center;
+}
+.ui-widget.mock tr {
+    text-align: center;
+}
+.ui-widget.mock tr input {
+    width: 200px; height: 30px; font-size: 30px; text-align: center;
 }
